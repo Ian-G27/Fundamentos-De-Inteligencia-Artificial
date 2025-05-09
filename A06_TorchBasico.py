@@ -189,4 +189,3 @@ if torch.cuda.is_available():
     z = z_d.to("cpu")
     z = z.numpy()
     print(z)
-    
