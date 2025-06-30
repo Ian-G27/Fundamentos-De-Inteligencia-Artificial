@@ -44,7 +44,7 @@ class MultiHeadAttention (nn.Module):
     #=======================
     def split_heads(self, x):
         batch_size, seq_length, d_model = x.size()
-            return x.view(batch_size, seq_length, self.num_heads, self.d_k).transpose(1, 2)
+        return x.view(batch_size, seq_length, self.num_heads, self.d_k).transpose(1, 2)
     #====================================
     # Combinar y transponer subconjuntos
     #====================================
@@ -121,7 +121,7 @@ class EncoderLayer(nn.Module):
         attn_output = self.self_attn(x, x, x, mask)
         x = self.norm1(x + self.dropout(attn_output))
         ff_output = self.feed_forward(x)
-        x = self.norm2(x + self.dropout (ff_output))
+        x = self.norm2(x + self.dropout(ff_output))
         return x
 #===============
 # Decodificador
@@ -131,7 +131,7 @@ class DecoderLayer(nn.Module):
     # Constructor y elementos necesarios
     #============================================
     def __init__(self, d_model, num_heads, d_ff, dropout):
-        super(DecoderLayer, self).__init_()
+        super(DecoderLayer, self).__init__()
         self.self_attn = MultiHeadAttention(d_model, num_heads)
         self.cross_attn = MultiHeadAttention(d_model, num_heads)
         self.feed_forward = PositionWiseFeedForward(d_model, d_ff)
