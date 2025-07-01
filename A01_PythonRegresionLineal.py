@@ -39,12 +39,12 @@ if __name__ == "__main__":
   X = data.iloc[:, 0]
   Y = data.iloc[:, 1]
   Ybar, w0, w1 = minimos_cuadrados(X, Y)
-#===========
-# Gráfica
-#===========
-plt.scatter (X, Y)
-plt.rcParams['figure.figsize'] = (12.0, 9.0)
-plt.plot([min(X), max(X)], [min(Ybar), max(Ybar)], color='red')
-plt.xlabel("x")
-plt.ylabel("y")
-plt.show()
+  #===========
+  # Gráfica
+  #===========
+  plt.scatter(X, Y)
+  plt.rcParams['figure.figsize'] = (12.0, 9.0)
+  plt.plot([min(X), max(X)], [min(Ybar), max(Ybar)], color='red')
+  plt.xlabel("x")
+  plt.ylabel("y")
+  plt.show()

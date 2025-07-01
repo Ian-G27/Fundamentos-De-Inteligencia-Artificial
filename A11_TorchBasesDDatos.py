@@ -58,7 +58,7 @@ class WineDataset(Dataset):
       # delimiter = símbolo delimitador
       # skiprows = líneas de encabezado
       #================================
-      xy = np.loadtxt('./data/wine/wine.csv', delimiter=',', dtype=np.float32, skiprows=1)
+      xy = np.loadtxt('./wine/wine.csv', delimiter=',', dtype=np.float32, skiprows=1)
       self.n_samples = xy.shape[0]
 
       #======================================================================

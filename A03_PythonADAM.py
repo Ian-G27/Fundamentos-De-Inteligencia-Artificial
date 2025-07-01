@@ -37,7 +37,7 @@ def DG_ADAM(epocs,dim,X,Y,Ybar,alpha,grad):
     for j in range(dim):
       mn[j] = beta1*mn[j] + (1.0-beta1) *g[j]
       vn[j] = beta2*vn[j] + (1.0-beta2)*g2[j]
-    b1 *= betal
+    b1 *= beta1
     b2 *= beta2
     mnn = mn/(1.0-b1)
     vnn = vn/(1.0-b2)

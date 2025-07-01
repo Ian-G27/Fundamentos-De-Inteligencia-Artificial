@@ -12,27 +12,27 @@ from matplotlib import pyplot as plt
 # Inicialización
 #=====================
 def init_params():
-    W1 = np.random. rand (10, 784) - 0.5
-    b1 = np.random. rand (10, 1) - 0.5
-    W2 = np.random.rand (10, 10) - 0.5
-    b2 = np.random. rand (10, 1) - 0.5
+    W1 = np.random.rand(10, 784) - 0.5
+    b1 = np.random.rand(10, 1) - 0.5
+    W2 = np.random.rand(10, 10) - 0.5
+    b2 = np.random.rand(10, 1) - 0.5
     return W1, b1, W2, b2
 #=======================================
 #Función de activación ReLU
 #=======================================
 def ReLU(Z):
-    return np.maximum (Z, 0)
+    return np.maximum(Z, 0)
 #==================================
 #Función de activación softmax
 #==================================
-def softmax (Z):
+def softmax(Z):
     A = np.exp(Z) / sum(np.exp(Z))
     return A
 #===============
 #   Evaluar red
 #================
-def forward_prop (W1, b1, W2, b2, X):
-    Z1 = W1.dot (X) + b1
+def forward_prop(W1, b1, W2, b2, X):
+    Z1 = W1.dot(X) + b1
     A1 = ReLU(Z1)
     Z2 =W2.dot(A1) + b2
     A2 = softmax(Z2)
@@ -150,4 +150,4 @@ if __name__ == "__main__ ":
   # Evaluar una serie de datos de prueba
   #==========================================
   for i in range(10):
-     test_prediction (i, W1, b1, W2, b2)
+     test_prediction(i, W1, b1, W2, b2)

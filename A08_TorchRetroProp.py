@@ -1,5 +1,5 @@
 #===============================
-# Gradinete simples con pytorch
+# Gradiente simples con pytorch
 #===============================
 # Ian Diego Buendia Alvarez
 # Fundamentos de IA

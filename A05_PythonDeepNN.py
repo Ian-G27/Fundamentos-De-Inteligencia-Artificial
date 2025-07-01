@@ -79,16 +79,16 @@ def backward_prop(Z, A, W, X, Y):
     one_hot_Y = one_hot(Y)
     dZ = A[n+1] - one_hot_Y
     dWW = 1 / m * dZ.dot(A[n].T)
-    dbb = np.expand_dims(1 / m * np.sum(dZ,axis=1),axcis=1)
+    dbb = np.expand_dims(1 / m * np.sum(dZ,axis=1),axis=1)
     db.append(dbb)
     dW.append(dWW)
     if n>1:
-        for i in range(n-1,0,-1):
-            dZ=W[i+1].T.dot(dZ) * ReLU_deriv(Z[i])
-            dWW = 1 / m * dZ.dot(A[i].T)
-            dbb = np.expand_dims(1 / m * np.sum(dZ,axis=1))
-            db.append(dbb)
-            dW.append(dWW)
+      for i in range(n-1,0,-1):
+        dZ = W[i+1].T.dot(dZ) * ReLU_deriv(Z[i])
+        dWW = 1 / m * dZ.dot(A[i].T)
+        dbb = np.expand_dims(1 / m * np.sum(dZ,axis=1), axis=1)
+        db.append(dbb)
+        dW.append(dWW)
     dZ = W[1].T.dot(dZ) * ReLU_deriv(Z[0])
     dWW = 1 / m * dZ.dot(X.T)
     dbb = np.expand_dims(1 / m * np.sum(dZ, axis=1), axis=1)
@@ -166,12 +166,16 @@ if __name__ == "__main__":
     data_dev = data[0:1000].T   # Formato transpuesto de datos
     Y_dev = data_dev[0]         # Resultados
     X_dev = data_dev[1:n]       # Foto
-    X_dev = X_dev / 255         # Normalizacion
+    X_dev = X_dev / 255.         # Normalizacion
     data_train = data[1000:m].T
     Y_train = data_train[0]
-    X_train = data_train[1,n]
+    X_train = data_train[1:n]
     X_train = X_train / 255.
     _,m_train = X_train.shape
+    #======================
+    #Entrenar la Red
+    #======================
+    W, b = gradient_descent(X_train, Y_train, 0.15, 1000)
     #======================
     #  Algunas pruebas
     #======================
