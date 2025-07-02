@@ -6,9 +6,9 @@
 # ESFM IPN Abril 2025
 #===================================
 
-#=======================
+#========================
 # Módulos necesarios
-#=======================
+#========================
 import torch
 import torch.nn as nn
 import numpy as np

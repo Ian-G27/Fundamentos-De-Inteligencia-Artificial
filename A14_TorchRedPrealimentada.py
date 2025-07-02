@@ -1,14 +1,14 @@
-#===============================
+#=================================
 # Red prealimentada (feed forward)
 #=================================
 # Ian Diego Buendia Alvarez
 # FUNDAMENTOS DE IA
 # ESFM IPN Abril 2025
-#===============================
+#=================================
 
 #==================================
 # Módulos necesarios
-#=================================
+#==================================
 import torch
 import torch.nn as nn
 import torchvision
@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 #=================================
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-#===============================
+#=================================
 # Hiper - parametros
 #=================================
 input_size  =784   # imagen 28x28
@@ -32,7 +32,7 @@ learning_rate =0.001 #  tasa de aprendizaje  (para que se vaya con calma)
 
 #======================================
 # MNIST base de datos
-#====================================
+#======================================
 train_dataset = torchvision.datasets.MNIST(root='./data/MNIST/raw',
                                             train = True,
                                            transform=transforms.ToTensor(),
@@ -41,7 +41,7 @@ test_dataset = torchvision.datasets.MNIST(root='./data/MNIST/raw',
                                            train =False,
                                           transform=transforms.ToTensor())
 
-#================================
+#===============================
 # Carga de datos
 #===============================
 train_loader = torch.utils.data.DataLoader( dataset = train_dataset,
@@ -53,17 +53,17 @@ test_loader = torch.utils.data.DataLoader (dataset = test_dataset,
 examples = iter(test_loader)                   # iterable
 example_data, example_targets = next(examples) # siguiente elemento
 
-#===========================
+#============================
 # Mostrar datos en una imgen
-#====================
+#============================
 for i in range(6):
   plt.subplot(2,3,i+1)
   plt.imshow(example_data[i][0], cmap='gray')
 plt.show()
 
-#=====================================
+#============================================================
 # Red neuronal completamente conectada con una caja oculta
-#=========================================
+#============================================================
 class NeuralNet(nn.Module):
   def __int__(self, input_size, hidden_size, num_classes):
     super(NeuralNet, self).__int__()
@@ -82,12 +82,12 @@ class NeuralNet(nn.Module):
 
 #===================================
 # Correr modelo en el GPU
-#===============================
+#===================================
 model = NeuralNet(input_size,hidden_size, num_classes).to(device)
 
-#=============================
+#=================================
 # optimizacion y calculo de error
-#=========================
+#=================================
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 

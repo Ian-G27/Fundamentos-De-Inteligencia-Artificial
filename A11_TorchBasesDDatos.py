@@ -6,9 +6,9 @@
 # ESFM IPN Abril 2025
 #=============================
 
-#=====================
+#======================
 # Módulos necesarios
-#=====================
+#======================
 import torch
 import torchvision
 from torch.utils.data import Dataset, DataLoader

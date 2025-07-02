@@ -4,40 +4,7 @@
 # Ian Diego Buendia Alvarez
 # Fundamentos de IA
 # ESFM IPN Abril 2025
-#=============================
-'''
-Transformaciones pueden ser aplicadas a imaganes PIL , tensores , ndarrays
-o datos comunes durante la creación de la base de datos
-
-lista completa de transformaciones ya programadas:
-https://pytorch.org/docs/stable/torchvision/transforms.html
-
-En imágenes
-===========
-CenterCrop, Grayscale, Pad, RandomAffine
-RandomCrop, RandomHorizontalFlip, RandomRotation
-Resize, Scale
-
-En Tensores
-===========
-LinearTransformation , Normalize,Random,BandomErasing
-
-Conversiones
-============
-ToPILImage: convertir de tensor a numpy ndrarray
-ToTensor : de numpy.ndarray a PILImage
-
-Generico
-========
-Usar Lambda
-
-Comunes
-========
-Escribir tu propio objeto (clase)
-Componer (compose) múltiples transformaciones
-===========================================
-composed = transforms.Compose([Rescale(256), RandomCrop(224)])
-'''
+#=================================
 
 #========================
 # Módulos necesarios
