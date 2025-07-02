@@ -1,7 +1,7 @@
 #=====================================
 # Diferenciación automática Autocard
 #=====================================
-# Chan Campos Ashanty Iyari
+# Ian Diego Buendia Alvarez
 # Fundamentos de IA
 # ESFM IPN
 # Marzo 2025
