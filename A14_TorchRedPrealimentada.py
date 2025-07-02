@@ -33,11 +33,11 @@ learning_rate =0.001 #  tasa de aprendizaje  (para que se vaya con calma)
 #======================================
 # MNIST base de datos
 #====================================
-train_dataset = torchvision.datasets.MNIST(root='./data',
+train_dataset = torchvision.datasets.MNIST(root='./data/MNIST/raw',
                                             train = True,
                                            transform=transforms.ToTensor(),
-                                          downloand=True)
-test_dataset = torchvision.datasets.MNIST(root='./data',
+                                          download=True)
+test_dataset = torchvision.datasets.MNIST(root='./data/MNIST/raw',
                                            train =False,
                                           transform=transforms.ToTensor())
 
@@ -83,7 +83,7 @@ class NeuralNet(nn.Module):
 #===================================
 # Correr modelo en el GPU
 #===============================
-model = NeuralNet(input_size,hidden_size, num_classes).to(devise)
+model = NeuralNet(input_size,hidden_size, num_classes).to(device)
 
 #=============================
 # optimizacion y calculo de error
@@ -99,8 +99,8 @@ for epoch in range(num_epochs):
   for i, (images, labels) in enumerate(train_loader):
     # dimensiones originalesn: [100,1,28, 28]
     # nuevas dimensioes : [100,784]
-    images = images.reshape(-1,28*28).to(devise)
-    labels = labels.to(devise)
+    images = images.reshape(-1,28*28).to(device)
+    labels = labels.to(device)
 
     # evaluación
     outputs = model(images)
@@ -119,11 +119,10 @@ for epoch in range(num_epochs):
 # Checar el modelo
 # En fase de prueba , no requerimos calcular gradientes
 #=======================================
-whith torch.no_grad():
+with torch.no_grad():
   n_correct = 0
   n_samples = 0
   for images, labels in test_loader:
-
     images = images.reshape(-1, 28*28).to(device)
     labels = labels.to(device)
     outputs = model(images)

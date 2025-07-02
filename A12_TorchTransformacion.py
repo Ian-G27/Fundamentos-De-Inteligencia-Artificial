@@ -56,7 +56,7 @@ class WineDataset(Dataset):
   # Constructor
   #=======================
   def __init__(self, transform=None):
-    xy = np.loadtxt('./data/wine/wine.csv', delimiter=',', dtype=np.float32, skiprows=1)
+    xy = np.loadtxt('C:/Users/ian_d/OneDrive/Documentos/Fundamentos-De-Inteligencia-Artificial/wine/wine.csv', delimiter=',', dtype=np.float32, skiprows=1)
     self.n_samples = xy.shape[0]
 
     # note que no convertimos en tensor aquí
@@ -106,13 +106,13 @@ class MulTransform:
 #=======================
 # Programa principal
 #====================
-if __name__ == "__maim__":
+if __name__ == "__main__":
 
   print('Sin transformación')
   dataset = WineDataset()
-  first_data = dataset()
+  first_data = dataset[0]
   features, labels = first_data
-  print( type(features), type (labels))
+  print( type(features), type(labels))
   print(features, labels)
 
   print('\nTransformado en tensor')
@@ -123,7 +123,7 @@ if __name__ == "__maim__":
   print(features, labels)
 
   print('\n Con transformación a tensor y multiplicación')
-  composed = torchvision.transform.Compose([ToTensor(), MulTransform(4)])
+  composed = torchvision.transforms.Compose([ToTensor(), MulTransform(4)])
   dataset = WineDataset(transform=composed)
   first_data = dataset[0]
   features, labels = first_data

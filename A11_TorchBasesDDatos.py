@@ -49,35 +49,35 @@ import math
 #===================
 class WineDataset(Dataset):
 
-  def __init__(self):
-      #===============================
-      # Inicializar, bajar datos, etc.
-      # lectura con numpy o pandas
-      #================================
-      # típicos datos separados por coma
-      # delimiter = símbolo delimitador
-      # skiprows = líneas de encabezado
-      #================================
-      xy = np.loadtxt('./wine/wine.csv', delimiter=',', dtype=np.float32, skiprows=1)
-      self.n_samples = xy.shape[0]
+    def __init__(self):
+        #===============================
+        # Inicializar, bajar datos, etc.
+        # lectura con numpy o pandas
+        #================================
+        # típicos datos separados por coma
+        # delimiter = símbolo delimitador
+        # skiprows = líneas de encabezado
+        #================================
+        xy = np.loadtxt('C:/Users/ian_d/OneDrive/Documentos/Fundamentos-De-Inteligencia-Artificial/wine/wine.csv', delimiter=',', dtype=np.float32, skiprows=1)
+        self.n_samples = xy.shape[0]
 
-      #======================================================================
-      # primera columna es etiquetada de clase y el resto son caracteristicas
-      #======================================================================
-      self.x_data = torch.from_numpy(xy[:, 1:]) # grupos del 1 en adelante
-      self.y_data = torch.from_numpy(xy[:, [0]]) # grupo 0
+        #======================================================================
+        # primera columna es etiquetada de clase y el resto son caracteristicas
+        #======================================================================
+        self.x_data = torch.from_numpy(xy[:, 1:]) # grupos del 1 en adelante
+        self.y_data = torch.from_numpy(xy[:, [0]]) # grupo 0
 
-      #==========================================================
-      # permitir indexación para obtener el dato i de dataset[i]
-      # método getter
-      #==========================================================
-      def __getitem__(self, index):
-          return self.x_data[index], self.y_data[index]
-      #==============================================
-      # len(dataset) es el tamaño de la base de datos
-      #==============================================
-      def __len__(self):
-          return self.n_samples
+    #==========================================================
+    # permitir indexación para obtener el dato i de dataset[i]
+    # método getter
+    #==========================================================
+    def __getitem__(self, index):
+        return self.x_data[index], self.y_data[index]
+    #==============================================
+    # len(dataset) es el tamaño de la base de datos
+    #==============================================
+    def __len__(self):
+        return self.n_samples
 
 #==========================
 # instanciar base de datos
@@ -118,14 +118,14 @@ total_samples = len(dataset)
 n_iterations = math.ceil(total_samples/4)
 print(total_samples, n_iterations)
 for epoch in range(num_epochs):
-  for i, (inputs, labels) in enumerate(train_loader):
-    #==================================================================
-    # 178 líneas, batch_size  = 4, n_iters=178/4=44.5 -> 45 iteraciones
-    # Corre tu proceso se aprendizaje
-    #==================================================================
-    # Diagnóstico
-    if (i+1) % 5 == 0:
-        print(f'Epoch: {epoch+1}/{num_epochs}, Step {i+1}/{n_iterations}| Inputs {inputs.shape} | Labels {labels.shape}')
+    for i, (inputs, labels) in enumerate(train_loader):
+        #==================================================================
+        # 178 líneas, batch_size  = 4, n_iters=178/4=44.5 -> 45 iteraciones
+        # Corre tu proceso se aprendizaje
+        #==================================================================
+        # Diagnóstico
+        if (i+1) % 5 == 0:
+            print(f'Epoch: {epoch+1}/{num_epochs}, Step {i+1}/{n_iterations}| Inputs {inputs.shape} | Labels {labels.shape}')
 
 #======================================================
 # algunas bases de datos existen en torchvision.dataset

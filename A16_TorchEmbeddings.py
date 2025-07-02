@@ -68,7 +68,7 @@ modelLinear = WordEmbeddingWithLinear()
 data = {
     "w1": modelLinear.input_to_hidden.weight.detach()[0].numpy(),
     "w2": modelLinear.input_to_hidden.weight.detach()[1].numpy(),
-    "token": ["Spirit", "es", "espectacular", "Lluvia"],
+    "token": ["The", "Sopranos", "Es", "Legendario"],
     "input": ["input1", "input2", "input3", "input4"]
 }
 
@@ -113,8 +113,8 @@ trainer = L.Trainer(max_epochs=500)
 trainer.fit(modelLinear, train_dataloaders=dataloader)
 
 data = {
-    "w1": modelLinear.input_to_hidden.weight.detach()[0].numpy()
-    "w2": modelLinear.input_to_hidden.weight.detach()[1].numpy()
+    "w1": modelLinear.input_to_hidden.weight.detach()[0].numpy(),
+    "w2": modelLinear.input_to_hidden.weight.detach()[1].numpy(),
     "token": ["THE", "SOPRANOS", "ES", "LEGENDARIO"],
     "input": ["input1", "input2", "input3", "input4"]
 }

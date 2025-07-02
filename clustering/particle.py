@@ -11,7 +11,7 @@ class Particle:
         if use_kmeans:
             k_means = KMeans(n_clusters=self.n_clusters)
             k_means.fit(data)
-            self.centroids_pos = k_means.cluster_centers
+            self.centroids_pos = k_means.cluster_centers_
         else:
             self.centroids_pos = data[np.random.choice(list(range(len(data))), self.n_clusters)]
 

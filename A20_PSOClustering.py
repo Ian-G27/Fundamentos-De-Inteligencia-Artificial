@@ -33,6 +33,7 @@ if plot:
 # Convierte a arreglo de numpy 2d
 #=================================
 data_points = data_points.values
+
 #==========================
 # Algoritmo PSO-Clustering
 #==========================
